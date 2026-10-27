@@ -1,14 +1,11 @@
-class LoginPage {
+const BasePage = require("./BasePage");
+class LoginPage extends BasePage {
   constructor(page) {
-    this.page = page;
+    super(page);
     this.usernameField = page.locator("#username");
     this.passwordField = page.locator("#password");
     this.loginButton = page.locator("#loginButton");
     this.errorMessage = page.locator("#errorMessage");
-  }
-
-  async navigate() {
-    await this.page.goto("https://example.com/login");
   }
 
   async login(username, password) {
@@ -21,3 +18,4 @@ class LoginPage {
     return await this.errorMessage.innerText();
   }
 }
+module.exports = LoginPage;
